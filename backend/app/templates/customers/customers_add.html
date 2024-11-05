@@ -1,0 +1,45 @@
+{%extends 'base.html'%}
+
+{%block body%}
+
+<h2>Add new Customer</h2>
+
+<form method="post">
+    {{form.csrf_token}}
+
+    <!-- {{ form.errors }} -->
+
+    <div class="mb-3">
+        <label for="firstname" class="form-label">Firstname</label>
+        {{form.firstname(class_="form-control")}}
+    </div>
+
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        {{form.name(class_="form-control")}}
+    </div>
+
+    <div class="mb-3">
+        <label for="plz" class="form-label">PLZ</label>
+        {{form.plz(class_="form-control")}}
+    </div>
+
+    <div class="mb-3">
+        <label for="city" class="form-label">City</label>
+        {{form.city(class_="form-control")}}
+    </div>
+
+    <div class="mb-3">
+        <label for="phonenumber" class="form-label">Phonenumber</label>
+        {{form.phonenumber(class_="form-control")}}
+    </div>
+
+    <div class="mb-3">
+        <label for="customerSince" class="form-label">customerSince</label>
+        {{form.customerSince(class_="form-control")}}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{%endblock%}

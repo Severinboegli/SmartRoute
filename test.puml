@@ -1,0 +1,14 @@
+@startuml
+class Animal {
+  +animalSound()
+}
+class Pig {
+  +animalSound()
+}
+class Dog {
+    +animalSound()
+}
+Animal <|-- Pig
+Animal <|-- Dog
+
+@enduml

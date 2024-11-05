@@ -1,0 +1,95 @@
+@startuml Klassendiagramm Device SmartRoute
+
+class Nanoleaf {
+    - ID: int
+    - AnzahlPanels: int
+    ---
+    + getID(): int
+    + getAnzahlPanels(): int
+    + setID(int): void
+    + setAnzahlPanels(int): void
+}
+
+class NanoleafPanel {
+    - PanelID: int
+    - NanoleafID: int
+    - Farbe: Farbe
+    ---
+    + getPanelID(): int
+    + getNanoleafID(): int
+    + getFarbe(): Farbe
+    + setPanelID(int): void
+    + setNanoleafID(int): void
+    + setFarbe(Farbe): void
+}
+
+abstract class Device {
+    + ID : int
+    + Name : String
+    + IP : String
+    + Port : int
+    ---
+    + getID(): int
+    + getName(): String
+    + getIP(): String
+    + getPort(): int
+    + setID(int): void
+    + setName(String): void
+    + setIP(String): void
+    + setPort(int): void
+}
+
+class PhilipsHue {
+    - ID : int
+    - Farbe : Farbe
+    ---
+    + getID(): int
+    + getFarbe(): Farbe
+    + setID(int): void
+    + setFarbe(Farbe): void
+}
+
+class Routine {
+    - RoutineID : int
+    - ActionJSON : String
+    - StartingDate : Date
+    - Name : String
+    ---
+    + getRoutineID(): int
+    + getActionJSON(): String
+    + getStartingDate(): Date
+    + getName(): String
+    + setRoutineID(int): void
+    + setActionJSON(String): void
+    + setStartingDate(Date): void
+    + setName(String): void
+}
+
+class Raum {
+    - RaumID : int
+    - Name : String
+    ---
+    + getRaumID(): int
+    + getName(): String
+    + setRaumID(int): void
+    + setName(String): void
+}
+
+class Farbe {
+    - farbeID : int
+    - name : String
+    - hexcode : String
+    ---
+    + getHexvalue(): String
+    + getRGBvalue(): String
+    + setRGBvalue(String): void
+    
+}
+
+Nanoleaf --* NanoleafPanel
+
+PhilipsHue <|-- Device
+Nanoleaf <|-- Device
+
+
+@enduml

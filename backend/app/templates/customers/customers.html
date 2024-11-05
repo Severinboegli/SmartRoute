@@ -1,0 +1,45 @@
+{%extends 'base.html'%}
+
+{%block body%}
+
+<h2>All Customers</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Firstname</th>
+      <th scope="col">Name</th>
+      <th scope="col">PLZ</th>
+      <th scope="col">City</th>
+      <th scope="col">Phonenumber</th>
+      <th scope="col">CustomerSince</th>
+      <th scope="col">CustomerID</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    {% for customer in customers %}
+    <tr>
+      <td>{{customer.firstname}}</td>
+      <td>{{customer.name}}</td>
+      <td>{{customer.plz}}</td>
+      <td>{{customer.city}}</td>
+      <td>{{customer.phonenumber}}</td>
+      <td>{{customer.customerSince}}</td>
+      <td>{{customer.customerId}}</td>
+      <td>
+        <a class="btn btn-outline-secondary" href="/customers/edit?id={{customer.customerId}}">✏️</a>
+        <form action="/customers/delete" method="post" style="display: inline;">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <input type="hidden" name="customerId" id="customerId" value="{{customer.customerId}}">
+          <a class="btn btn-outline-secondary" href="#" onclick="deleteCustomer(this); return false;">🗑️</a>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+
+
+  </tbody>
+</table>
+
+{%endblock%}
