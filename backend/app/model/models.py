@@ -1,7 +1,5 @@
 # coding: utf-8
 from flask_sqlalchemy import SQLAlchemy
-import enum
-
 
 db = SQLAlchemy()
 
@@ -58,8 +56,9 @@ class Nanoleaf(db.Model):
     name = db.Column(db.String(20), nullable=False)
     ip = db.Column(db.String(20), nullable=False)
     port = db.Column(db.Integer, nullable=False)
-    anzahlPanel = db.Column(db.Integer, nullable=False)
-    
+    panelCount = db.Column(db.Integer, nullable=True)
+  
+"""   
 class NanoleafPanel(db.Model):
     __tablename__ = "nanoleafpanel"
     
@@ -92,3 +91,6 @@ class Farbe(db.Model):
     farbeId = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(20), nullable=False)
     hexcode = db.Column(db.String(20), nullable=False)
+    
+    
+"""

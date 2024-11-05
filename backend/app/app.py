@@ -5,6 +5,7 @@ from model.models import db
 from controllers.index import index_blueprint
 from controllers.products import products_blueprint
 from controllers.customers import customers_blueprint
+from controllers.devices import devices_blueprint
 
 from flask_wtf.csrf import CSRFProtect
 from dotenv import load_dotenv # Umgebungsvariablen aus dem .env laden
@@ -24,5 +25,6 @@ db.init_app(app)
 app.register_blueprint(index_blueprint)
 app.register_blueprint(products_blueprint)
 app.register_blueprint(customers_blueprint)
+app.register_blueprint(devices_blueprint)
 
 

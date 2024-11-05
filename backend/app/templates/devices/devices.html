@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block body %}
+  <div class="mt-4 p-5 bg-light text-secondary rounded">
+    <h1>Nanoleaf / Philips Hue SmartRoutine</h1>
+    <button><a href="/devices/refresh">Refresh</a></button>
+  </div>
+
+  <h2>Nanoleaf Devices</h2>
+  <!-- Nanoleaf -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">IP-Adresse</th>
+        <th scope="col">AnzahlPanel</th>
+        <th scope="col">ID</th>
+        <th scope="col">Port</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for nanoleaf in nanoleafs %}
+        <tr>
+          <td>{{ nanoleaf.name }}</td>
+          <td>{{ nanoleaf.ip }}</td>
+          <td>{{ nanoleaf.panelCount }}</td>
+          <td>{{ nanoleaf.id }}</td>
+          <td>{{ nanoleaf.port }}</td>
+          <td>
+            <a class="btn btn-outline-secondary" href="/nanoleaf/edit?id={{ nanoleaf.id }}">✏️</a>
+            <form action="/nanoleaf/delete" method="post" style="display: inline;">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+              <input type="hidden" name="nanoleafid" id="nanoleafid" value="{{ nanoleaf.id }}" />
+              <a class="btn btn-outline-secondary" href="#" onclick="deleteNanoleaf(this); return false;">🗑️</a>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+    <h2>Philips Hue Devices</h2>
+    <!-- Philips Hue -->
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Farbe</th>
+          <th scope="col">IP-Adresse</th>
+          <th scope="col">ID</th>
+          <th scope="col">Port</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for hue in hues %}
+          <tr>
+            <td>{{ hue.name }}</td>
+            <td>{{ hue.farbe }}</td>
+            <td>{{ hue.ip }}</td>
+            <td>{{ hue.id }}</td>
+            <td>{{ hue.port }}</td>
+            <td>
+              <a class="btn btn-outline-secondary" href="/hue/edit?id={{ hue.id }}">✏️</a>
+              <form action="/hue/delete" method="post" style="display: inline;">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                <input type="hidden" name="hueid" id="hueid" value="{{ hue.id }}" />
+                <a class="btn btn-outline-secondary" href="#" onclick="deleteHue(this); return false;">🗑️</a>
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+{% endblock %}
